@@ -8,7 +8,8 @@ function Navbar({ items }) {
   const { auth } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  const profileObject = JSON.parse(localStorage.getItem("Profile"));
+  const profileString = localStorage.getItem("Profile");
+  const profileObject = profileString ? JSON.parse(profileString) : null;
 
   // console.log(auth);
   return (
@@ -22,12 +23,18 @@ function Navbar({ items }) {
           onClick={() => setIsOpen(!isOpen)}
         >
           <FiUser size={40} className="rounded-full border-2 border-primary" />
-          <div className="cursor-pointer text-end">
-            <h1 className="font-bold text-[20px]">
-              {profileObject.nama} || {profileObject.program_studi}
-            </h1>
-            <p>{profileObject.nim}</p>
-          </div>
+          {profileObject ? (
+            <div className="cursor-pointer text-end">
+              <h1 className="font-bold text-[20px]">
+                {profileObject.nama} || {profileObject.program_studi}
+              </h1>
+              <p>{profileObject.nim}</p>
+            </div>
+          ) : (
+            <div className="cursor-pointer text-end">
+              <h1 className="font-bold text-[20px]">Guest</h1>
+            </div>
+          )}
         </div>
       </nav>
       {isOpen ? <PopUpEditProfile /> : ""}

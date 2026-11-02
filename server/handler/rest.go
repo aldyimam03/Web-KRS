@@ -85,14 +85,14 @@ func (r *rest) RegisterMiddlewareAndRoutes() {
 		}
 
 		// prodi routes
-		prodi := api.Group("/program-studi", middleware.ValidateToken("admin"))
-		{
-			prodi.POST("", r.StoreProdiHandler)
-			prodi.PATCH("/:id", r.EditProdiHandler)
-			prodi.GET("/:id", r.DetailProdiHandler)
-			prodi.DELETE("/:id", r.DeleteProdiHandler)
-			api.GET("program-studi", r.FetchProdiHandler)
-		}
+				prodi := api.Group("/program-studi", middleware.ValidateToken("admin"))
+				{
+					prodi.POST("", r.StoreProdiHandler)
+					prodi.PATCH("/:id", r.EditProdiHandler)
+					prodi.GET("/:id", r.DetailProdiHandler)
+					prodi.DELETE("/:id", r.DeleteProdiHandler)
+					prodi.GET("", r.FetchProdiHandler)
+				}
 
 		// matkul routes
 		matkul := api.Group("/matkul", middleware.ValidateToken("admin"))
@@ -153,10 +153,10 @@ func (r *rest) RegisterMiddlewareAndRoutes() {
 		}
 
 		// dashboard routes
-		dashboardAdmin := api.Group("admin/dashboard").Use(middleware.ValidateToken("admin"))
-		{
-			dashboardAdmin.GET("", r.DashboardAdminHandler)
-		}
+				dashboardAdmin := api.Group("/admin/dashboard").Use(middleware.ValidateToken("admin"))
+				{
+					dashboardAdmin.GET("", r.DashboardAdminHandler)
+				}
 	}
 }
 

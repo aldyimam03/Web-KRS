@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"web-krs/config/mysql"
 
+	"github.com/joho/godotenv"
 	"gorm.io/gorm"
 )
 
@@ -22,6 +23,7 @@ type (
 )
 
 func NewConfig() Config {
+	_ = godotenv.Load(".env") // ignore error, fallback to OS env
 	return &config{}
 }
 
@@ -44,7 +46,9 @@ func(c *config) ServiceHost() string {
 
 func(c *config) ServicePort() int {
 	getPort := os.Getenv("DB_PORT")
-
+	if getPort == "" {
+		return 3306 // default MySQL port
+	}
 	conv, _ := strconv.Atoi(getPort)
 
 	return conv

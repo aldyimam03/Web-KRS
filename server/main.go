@@ -1,22 +1,13 @@
 package main
 
 import (
-	"log"
 	"web-krs/config"
 	"web-krs/handler"
 	"web-krs/repository"
 	"web-krs/service"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
-
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Fatal("Error")
-	}
 
 	config := config.NewConfig()
 

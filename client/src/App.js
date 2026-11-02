@@ -12,34 +12,34 @@ import PageLoading from "./component/loader/PageLoading";
 
 // Admin
 import Home from "./page/admin/page/Home";
-const MatkulAdd = lazy(() => wait(1000).then(() => import("./page/admin/features/mataKuliah/components/MatkulAdd")));
-const MatkulEdit = lazy(() => wait(1000).then(() => import("./page/admin/features/mataKuliah/components/MatkulEdit")));
-const MataKuliah = lazy(() => wait(1000).then(() => import("./page/admin/page/MataKuliah")));
+const MatkulAdd = lazy(() => import("./page/admin/features/mataKuliah/components/MatkulAdd"));
+const MatkulEdit = lazy(() => import("./page/admin/features/mataKuliah/components/MatkulEdit"));
+const MataKuliah = lazy(() => import("./page/admin/page/MataKuliah"));
 
-const KelasAdd = lazy(() => wait(1000).then(() => import("./page/admin/features/kelas/components/KelasAdd")));
-const KelasEdit = lazy(() => wait(1000).then(() => import("./page/admin/features/kelas/components/KelasEdit")));
-const Kelas = lazy(() => wait(1000).then(() => import("./page/admin/page/Kelas")));
+const KelasAdd = lazy(() => import("./page/admin/features/kelas/components/KelasAdd"));
+const KelasEdit = lazy(() => import("./page/admin/features/kelas/components/KelasEdit"));
+const Kelas = lazy(() => import("./page/admin/page/Kelas"));
 
-const FakultasAdd = lazy(() => wait(1000).then(() => import("./page/admin/features/fakultas/components/FakultasAdd")));
-const FakultasEdit = lazy(() => wait(1000).then(() => import("./page/admin/features/fakultas/components/FakultasEdit")));
-const Fakultas = lazy(() => wait(1000).then(() => import("./page/admin/page/Fakultas")));
+const FakultasAdd = lazy(() => import("./page/admin/features/fakultas/components/FakultasAdd"));
+const FakultasEdit = lazy(() => import("./page/admin/features/fakultas/components/FakultasEdit"));
+const Fakultas = lazy(() => import("./page/admin/page/Fakultas"));
 
-const ProgramStudiAdd = lazy(() => wait(1000).then(() => import("./page/admin/features/programStudi/components/ProgramStudiAdd")));
-const ProgramStudiEdit = lazy(() => wait(1000).then(() => import("./page/admin/features/programStudi/components/ProgramStudiEdit")));
-const ProgramStudi = lazy(() => wait(1000).then(() => import("./page/admin/page/ProgramStudi")));
+const ProgramStudiAdd = lazy(() => import("./page/admin/features/programStudi/components/ProgramStudiAdd"));
+const ProgramStudiEdit = lazy(() => import("./page/admin/features/programStudi/components/ProgramStudiEdit"));
+const ProgramStudi = lazy(() => import("./page/admin/page/ProgramStudi"));
 
-const UserAddAdmin = lazy(() => wait(1000).then(() => import("./page/admin/features/user/components/UserAddAdmin")));
-const UserEdit = lazy(() => wait(1000).then(() => import("./page/admin/features/user/components/UserEdit")));
-const User = lazy(() => wait(1000).then(() => import("./page/admin/page/User")));
+const UserAddAdmin = lazy(() => import("./page/admin/features/user/components/UserAddAdmin"));
+const UserEdit = lazy(() => import("./page/admin/features/user/components/UserEdit"));
+const User = lazy(() => import("./page/admin/page/User"));
 
-const Dashboard = lazy(() => wait(1000).then(() => import("./page/admin/page/Dashboard")));
+const Dashboard = lazy(() => import("./page/admin/page/Dashboard"));
 
 // User Page
-const HomeUser = lazy(() => wait(1000).then(() => import("./page/HomeUser")));
-const DashboardUser = lazy(() => wait(1000).then(() => import("./page/DashboardUser/DashboardUser")));
-const RandomKrs = lazy(() => wait(1000).then(() => import("./page/RandomKrs/RandomKrs")));
-const PlanningKrs = lazy(() => wait(1000).then(() => import("./page/PlanningKrs/features/PlanningKrs")));
-const MyPlan = lazy(() => wait(1000).then(() => import("./page/MyPlan/MyPlan")));
+const HomeUser = lazy(() => import("./page/HomeUser"));
+const DashboardUser = lazy(() => import("./page/DashboardUser/DashboardUser"));
+const RandomKrs = lazy(() => import("./page/RandomKrs/RandomKrs"));
+const PlanningKrs = lazy(() => import("./page/PlanningKrs/features/PlanningKrs"));
+const MyPlan = lazy(() => import("./page/MyPlan/MyPlan"));
 
 function App() {
   return (
@@ -113,12 +113,5 @@ const SuspenseWrapper = () => {
     </Suspense>
   );
 };
-
-const wait = (time) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-};
-
 
 export default App;

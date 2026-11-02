@@ -1,6 +1,4 @@
-import axios from "axios";
+import api from "./client";
 
-export const url = axios.create({
-  baseURL: "http://api.desasumberpucung.web.id/api/",
-  // baseURL: "http://localhost:8080",
-});
+export { api as default };
+export { api as url };

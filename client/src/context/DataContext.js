@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { url } from "../api/url";
+import api from "../api/client";
 
 export const DataContext = createContext();
 
@@ -19,14 +19,8 @@ export function DataProvider({ children }) {
 
   useEffect(() => {
     const getDataMatkul = async () => {
-      const token = localStorage.getItem("Authorization");
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const { data } = await url.get("/matkul", config);
       try {
+        const { data } = await api.get("/matkul");
         setDataMatkul(data.data);
         console.log(data);
       } catch (error) {
@@ -43,13 +37,7 @@ export function DataProvider({ children }) {
   useEffect(() => {
     const getDataKelas = async () => {
       try {
-        const token = localStorage.getItem("Authorization");
-        let config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const { data } = await url.get("/kelas", config);
+        const { data } = await api.get("/kelas");
         console.log(data);
         setDataKelas(data.data);
       } catch (err) {
@@ -66,13 +54,7 @@ export function DataProvider({ children }) {
   useEffect(() => {
     const getDataUser = async () => {
       try {
-        const token = localStorage.getItem("Authorization");
-        let config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const { data } = await url.get("/user", config);
+        const { data } = await api.get("/user");
         console.log(data);
         setDataUser(data.data);
       } catch (err) {
@@ -88,11 +70,6 @@ export function DataProvider({ children }) {
 
   const SetOpen = () => {
     setOpen(!open);
-  };
-
-  const token = localStorage.getItem("Authorization");
-  const config = {
-    headers: `Bearer ${token}`,
   };
 
   const link = {
@@ -119,7 +96,6 @@ export function DataProvider({ children }) {
         open,
         SetOpen,
         link,
-        config,
         selectedIdMatkul,
         setSelectedIdMatkul,
         kelasFiltered,
