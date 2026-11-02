@@ -1,3 +1,0 @@
-const changeFormatTable = (table) => {
-    
-}
