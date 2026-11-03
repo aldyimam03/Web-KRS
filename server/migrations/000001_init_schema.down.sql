@@ -1,0 +1,9 @@
+-- 000001_init_schema.down.sql
+DROP TABLE IF EXISTS plans;
+DROP TABLE IF EXISTS jadwal_kelas;
+DROP TABLE IF EXISTS kelas;
+DROP TABLE IF EXISTS jam_kelas;
+DROP TABLE IF EXISTS matkuls;
+DROP TABLE IF EXISTS program_studis;
+DROP TABLE IF EXISTS fakultas;
+DROP TABLE IF EXISTS users;

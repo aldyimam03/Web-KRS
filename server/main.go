@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"web-krs/config"
 	"web-krs/handler"
 	"web-krs/repository"
@@ -8,11 +10,16 @@ import (
 )
 
 func main() {
-
-	config := config.NewConfig()
+	cfg := config.NewConfig()
 
 	// init repository
-	repo := repository.Init(config.Database())
+	db := cfg.Database()
+	repo := repository.Init(db)
+
+	// run migrations
+	if err := config.RunMigrations(db, config.GetMigrationsPath()); err != nil {
+		log.Printf("Migration notice: %v", err)
+	}
 
 	// init service
 	service := service.Init(repo)

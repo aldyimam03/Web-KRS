@@ -17,6 +17,7 @@ type (
 		ServiceDatabase() string
 		ServiceUsername() string
 		ServicePassword() string
+		RunMigrations(db *gorm.DB, migrationsPath string) error
 	}
 
 	config struct{}
@@ -54,6 +55,10 @@ func(c *config) ServicePort() int {
 	return conv
 }
 
-func (c *config) ServiceDatabase() string  {
+func (c *config) ServiceDatabase() string {
 	return os.Getenv("DB_DATABASE")
+}
+
+func (c *config) RunMigrations(db *gorm.DB, migrationsPath string) error {
+	return RunMigrations(db, migrationsPath)
 }
