@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ToastProvider } from './context/ToastContext';
+import { ToastContainer } from './component/Toast';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -28,6 +30,7 @@ function getQueryClient() {
 
 import App from './App';
 import './index.css';
+import './theme-didx.css';
 
 const queryClient = getQueryClient();
 
@@ -35,7 +38,10 @@ const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <ToastProvider>
+        <App />
+        <ToastContainer />
+      </ToastProvider>
     </QueryClientProvider>
   </BrowserRouter>
 );
